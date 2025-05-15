@@ -1,0 +1,58 @@
+<form [formGroup]="orderForm">
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="Descrição do Pedido" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Nome do Cliente" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="address" placeholder="Endereço" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="phone" placeholder="Telefone" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Hambúrgueres</mat-label>
+    <mat-select formControlName="hamburguerIds" multiple>
+      <mat-option *ngFor="let h of hamburguerIds" [value]="h.id">
+        {{ h.description }} - {{ h.price | currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Bebidas</mat-label>
+    <mat-select formControlName="itemIds" multiple>
+      <mat-option *ngFor="let d of itemIds" [value]="d.id">
+        {{ d.description }} - {{ d.price | currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Adicionais</mat-label>
+    <mat-select formControlName="additionalItemIds" multiple>
+      <mat-option *ngFor="let a of additionalItemIds" [value]="a.id">
+        {{ a.description }} - {{ a.price | currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Observações</mat-label>
+    <textarea matInput formControlName="observations" rows="3" placeholder="Digite observações separadas por linha"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Total</mat-label>
+    <input matInput [value]="total | currency" placeholder="Total" disabled />
+  </mat-form-field>
+
+
+
+  <button mat-raised-button color="primary" (click)="submitOrder()">Salvar Pedido</button>
+</form>

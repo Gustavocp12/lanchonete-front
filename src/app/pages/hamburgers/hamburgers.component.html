@@ -1,0 +1,20 @@
+<form [formGroup]="hamburgerForm">
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="Descrição do Hambúrguer" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="price" placeholder="Preço" type="number" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ingredientes</mat-label>
+    <mat-select formControlName="itemIds" multiple>
+      <mat-option *ngFor="let ing of ingredients" [value]="ing.id">
+        {{ ing.description }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="saveBurger()">Salvar</button>
+</form>
