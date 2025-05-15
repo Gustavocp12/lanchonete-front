@@ -14,10 +14,6 @@ export class HamburgersService {
     return this.http.post<Hamburger>(environment.api + 'hamburger', hamburger);
   }
 
-  public findById(id: number) {
-    return this.http.get<Hamburger>(environment.api + 'hamburger/' + id);
-  }
-
   public findAll() {
     return this.http.get<Hamburger[]>(environment.api + 'hamburger');
   }

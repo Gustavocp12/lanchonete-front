@@ -14,16 +14,8 @@ export class ItemsService {
     return this.http.post<Item>(environment.api + 'items', item);
   }
 
-  public findById(id: number) {
-    return this.http.get<Item>(environment.api + 'items/' + id);
-  }
-
   public findAll() {
     return this.http.get<Item[]>(environment.api + 'items');
-  }
-
-  public findByDescription(description: string) {
-    return this.http.get<Item[]>(environment.api + 'items/description/' + description);
   }
 
   public findByType(type: number) {
